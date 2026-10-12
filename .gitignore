@@ -1,0 +1,22 @@
+# Build & Dependencies
+backend/target/
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+
+# Environment and Logs
+*.log
+.env
+backend/.env
+frontend/.env
+*.local
+
+# IDE & OS
+.idea/
+.vscode/
+*.iml
+*.DS_Store
+Thumbs.db
+
+# Maven wrapper and downloaded tools in scratch
+.mvn/

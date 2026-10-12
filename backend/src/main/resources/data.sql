@@ -1,0 +1,3 @@
+-- Smart Family Financial Commitment & EMI Management System
+-- Initial schema and seed queries (auto-handled by JPA hibernate ddl-auto=update and DataLoader.java)
+-- Database: smart_family_financial_db
