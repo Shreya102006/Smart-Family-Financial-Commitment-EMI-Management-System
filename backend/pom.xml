@@ -82,6 +82,7 @@
     </dependencies>
 
     <build>
+        <finalName>smart-family-financial-1.0.0</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

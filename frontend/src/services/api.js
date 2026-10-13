@@ -1,7 +1,11 @@
 import axios from 'axios';
 
+// Dynamic backend API base URL with fallback to local port 8083 or 8080
+const rawBaseUrl = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE_URL || 'http://localhost:8083/api';
+const cleanBaseUrl = rawBaseUrl.endsWith('/api') ? rawBaseUrl : `${rawBaseUrl.replace(/\/$/, '')}/api`;
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8083/api',
+  baseURL: cleanBaseUrl,
   headers: {
     'Content-Type': 'application/json'
   }

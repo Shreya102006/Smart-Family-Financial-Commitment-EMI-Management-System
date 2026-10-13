@@ -20,3 +20,6 @@ Thumbs.db
 
 # Maven wrapper and downloaded tools in scratch
 .mvn/
+data/
+*.mv.db
+*.trace.db
