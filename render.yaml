@@ -2,8 +2,8 @@ services:
   - type: web
     name: smart-family-backend
     runtime: docker
-    dockerfilePath: backend/Dockerfile
-    dockerContext: backend
+    dockerfilePath: Dockerfile
+    dockerContext: .
     envVars:
       - key: PORT
         value: 10000

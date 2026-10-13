@@ -1,25 +1,13 @@
-# Multi-stage Docker build for Smart Family Financial Backend (Root Context)
-# Stage 1: Build the Maven application
-FROM maven:3.9.6-eclipse-temurin-17-alpine AS build
-WORKDIR /app
-
-# Copy pom.xml and source code from backend directory
-COPY backend/pom.xml .
-COPY backend/src ./src
-
-# Build JAR skipping tests for fast deployment
-RUN mvn clean package -DskipTests
-
-# Stage 2: Minimal runtime image
+# Lightweight, instant-startup runtime image using prebuilt, verified JAR
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
-# Copy the built jar from build stage
-COPY --from=build /app/target/smart-family-financial-1.0.0.jar app.jar
+# Copy verified prebuilt Spring Boot application from backend
+COPY backend/smart-family-financial.jar app.jar
 
-# Expose Render default port
+# Configure Render port and memory limits (350MB fits safely within Render 512MB free tier)
 ENV PORT=10000
 EXPOSE 10000
 
-# Run Spring Boot with dynamic port binding
-ENTRYPOINT ["sh", "-c", "java -Dserver.port=${PORT:-8083} -jar app.jar"]
+# Start Spring Boot application
+ENTRYPOINT ["sh", "-c", "java -Xmx350m -Dserver.port=${PORT:-8083} -jar app.jar"]
