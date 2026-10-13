@@ -8,7 +8,7 @@ frontend/dist-ssr/
 *.log
 .env
 backend/.env
-frontend/.env
+!frontend/.env.production
 *.local
 
 # IDE & OS
