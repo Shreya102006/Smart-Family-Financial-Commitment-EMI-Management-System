@@ -1,10 +1,9 @@
 services:
   - type: web
     name: smart-family-backend
-    runtime: java
-    rootDir: backend
-    buildCommand: mvn clean package -DskipTests
-    startCommand: java -jar target/smart-family-financial-1.0.0.jar
+    runtime: docker
+    dockerfilePath: backend/Dockerfile
+    dockerContext: backend
     envVars:
       - key: PORT
         value: 10000
